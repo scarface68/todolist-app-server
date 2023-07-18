@@ -10,7 +10,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cors());
 
-const mongoDBUrl = "mongodb://127.0.0.1:27017/svietDB";
+const mongoDBUrl =
+  "mongodb+srv://saichandan68:123@cluster0.mbmmqea.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoDBUrl);
 
 const itemSchema = mongoose.Schema({
