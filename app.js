@@ -44,7 +44,14 @@ app.post("/items", async (req, res) => {
 });
 
 app.patch("/items/:id", async (req, res) => {
-  res.send("Hello");
+  Item.findOne({ _id: req.params.id }).then((item) => {
+    const toBeChanged = req.body.toBeChanged;
+    const task = req.body.task;
+    if (task) item.task = task;
+    item[toBeChanged] = !item[toBeChanged];
+    item.save();
+    res.json(item);
+  });
 });
 
 app.delete("/items/:id", async (req, res) => {
